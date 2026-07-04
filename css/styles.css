@@ -13,3 +13,46 @@ main {
   text-align: center;
   padding: 1.5rem 1rem;
 }
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+}
+
+#status {
+  font-size: 1.25rem;
+  min-height: 1.5em;
+  margin: 0 0 1.5rem;
+  color: #94a3b8;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  width: min(90vw, 400px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f8fafc;
+  background: #1e293b;
+  border: 2px solid #334155;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cell:hover:not(:disabled) {
+  background: #334155;
+}
+
+.cell:disabled {
+  cursor: default;
+}
