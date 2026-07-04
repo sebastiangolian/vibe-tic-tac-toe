@@ -26,14 +26,56 @@ h1 {
   color: #94a3b8;
 }
 
+#board-wrapper {
+  position: relative;
+  width: min(90vw, 400px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
 #board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 0.5rem;
-  width: min(90vw, 400px);
-  aspect-ratio: 1 / 1;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+.win-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 6px;
+  width: 78%;
+  background: #ffffff;
+  border-radius: 3px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleX(0);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: none;
+}
+
+.win-line.is-visible {
+  opacity: 1;
+}
+
+.win-line--row-0 { top: 16.67%; transform: translate(-50%, -50%) rotate(0deg) scaleX(1); }
+.win-line--row-1 { top: 50%; transform: translate(-50%, -50%) rotate(0deg) scaleX(1); }
+.win-line--row-2 { top: 83.33%; transform: translate(-50%, -50%) rotate(0deg) scaleX(1); }
+
+.win-line--col-0 { left: 16.67%; transform: translate(-50%, -50%) rotate(90deg) scaleX(1); }
+.win-line--col-1 { left: 50%; transform: translate(-50%, -50%) rotate(90deg) scaleX(1); }
+.win-line--col-2 { left: 83.33%; transform: translate(-50%, -50%) rotate(90deg) scaleX(1); }
+
+.win-line--diag-main {
+  width: 138%;
+  transform: translate(-50%, -50%) rotate(45deg) scaleX(1);
+}
+
+.win-line--diag-anti {
+  width: 138%;
+  transform: translate(-50%, -50%) rotate(-45deg) scaleX(1);
 }
 
 .cell {

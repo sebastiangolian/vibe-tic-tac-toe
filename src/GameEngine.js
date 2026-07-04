@@ -17,7 +17,7 @@ export class GameEngine {
     this.#players = players;
     this.#winStrategy = winStrategy;
     this.#currentPlayerIndex = 0;
-    this.#result = { status: "in-progress", winner: null };
+    this.#result = GameEngine.#initialResult();
   }
 
   get board() {
@@ -52,10 +52,14 @@ export class GameEngine {
   reset() {
     this.#board.reset();
     this.#currentPlayerIndex = 0;
-    this.#result = { status: "in-progress", winner: null };
+    this.#result = GameEngine.#initialResult();
   }
 
   #advanceToNextPlayer() {
     this.#currentPlayerIndex = (this.#currentPlayerIndex + 1) % this.#players.length;
+  }
+
+  static #initialResult() {
+    return { status: "in-progress", winner: null, line: null };
   }
 }

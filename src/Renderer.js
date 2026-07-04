@@ -4,8 +4,9 @@ export class Renderer {
   /**
    * @param {Array<unknown | null>} cells
    * @param {string} statusMessage
+   * @param {number[] | null} winningLine
    */
-  render(cells, statusMessage) {
+  render(cells, statusMessage, winningLine) {
     throw new Error("render must be implemented by a subclass");
   }
 }

@@ -7,13 +7,14 @@ import { InputHandler } from "./InputHandler.js";
 
 const boardElement = document.getElementById("board");
 const statusElement = document.getElementById("status");
+const winLineElement = document.getElementById("win-line");
 const resetButton = document.getElementById("reset-button");
 
 const board = new Board();
 const players = [new Player("Player X", "X"), new Player("Player O", "O")];
 const winStrategy = new ThreeByThreeWinStrategy();
 const engine = new GameEngine(board, players, winStrategy);
-const renderer = new DomRenderer(boardElement, statusElement);
+const renderer = new DomRenderer(boardElement, statusElement, winLineElement);
 
 function describeResult() {
   const { status, winner } = engine.result;
@@ -30,7 +31,7 @@ function describeResult() {
 }
 
 function update() {
-  renderer.render(engine.board.getCells(), describeResult());
+  renderer.render(engine.board.getCells(), describeResult(), engine.result.line);
 }
 
 new InputHandler(boardElement, (index) => {

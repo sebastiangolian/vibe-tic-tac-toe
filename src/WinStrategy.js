@@ -3,7 +3,7 @@
 export class WinStrategy {
   /**
    * @param {import("./Board.js").Board} board
-   * @returns {{ status: "win" | "draw" | "in-progress", winner: unknown | null }}
+   * @returns {{ status: "win" | "draw" | "in-progress", winner: unknown | null, line: number[] | null }}
    */
   getResult(board) {
     throw new Error("getResult must be implemented by a subclass");

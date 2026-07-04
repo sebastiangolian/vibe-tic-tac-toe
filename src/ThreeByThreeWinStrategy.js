@@ -16,16 +16,17 @@ export class ThreeByThreeWinStrategy extends WinStrategy {
   getResult(board) {
     const cells = board.getCells();
 
-    for (const [a, b, c] of WIN_LINES) {
+    for (const line of WIN_LINES) {
+      const [a, b, c] = line;
       if (cells[a] !== null && cells[a] === cells[b] && cells[b] === cells[c]) {
-        return { status: "win", winner: cells[a] };
+        return { status: "win", winner: cells[a], line };
       }
     }
 
     if (board.isFull()) {
-      return { status: "draw", winner: null };
+      return { status: "draw", winner: null, line: null };
     }
 
-    return { status: "in-progress", winner: null };
+    return { status: "in-progress", winner: null, line: null };
   }
 }
