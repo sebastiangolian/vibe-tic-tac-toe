@@ -16,7 +16,7 @@ self-contained unit of work; later items depend on the abstractions introduced e
       concrete implementations.
 - [x] 6. `Renderer` — a rendering interface plus a DOM-based implementation. Keeps game logic
       completely unaware of the DOM (Dependency Inversion / Interface Segregation).
-- [ ] 7. `InputHandler` — translates DOM click events into moves sent to `GameEngine`, kept
+- [x] 7. `InputHandler` — translates DOM click events into moves sent to `GameEngine`, kept
       separate from rendering concerns (Interface Segregation).
 - [ ] 8. Composition root — wire `Board`, `Player`s, `WinChecker`, `Renderer` and `InputHandler`
       together in `main.js`.
