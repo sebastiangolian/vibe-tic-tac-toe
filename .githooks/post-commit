@@ -1,0 +1,13 @@
+#!/bin/sh
+# Bumps src/version.js and folds it into the commit that was just created.
+# BUMP_HOOK_RUNNING guards against infinite recursion: `git commit --amend` below re-triggers
+# this same post-commit hook, and this env var (inherited by that child process) makes the
+# re-entrant call a no-op.
+if [ -n "$BUMP_HOOK_RUNNING" ]; then
+  exit 0
+fi
+export BUMP_HOOK_RUNNING=1
+
+node "$(dirname "$0")/bump-version.js"
+git add src/version.js
+git commit --amend --no-edit -q

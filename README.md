@@ -43,13 +43,19 @@ See [TODO.md](TODO.md) for the original design breakdown and progress.
 ## Versioning
 
 The version shown in the bottom-right corner ([`src/version.js`](src/version.js)) is bumped
-automatically on every deploy to `main` by
-[`.github/scripts/bump-version.js`](.github/scripts/bump-version.js),
-based on Conventional Commit messages pushed in that deploy:
+automatically on every commit by a local `post-commit` git hook
+([`.githooks/post-commit`](.githooks/post-commit) /
+[`.githooks/bump-version.js`](.githooks/bump-version.js)), based on that commit's message
+(Conventional Commits):
 
 - a breaking change (`feat!:`, `fix!:`, or a `BREAKING CHANGE` footer) bumps the **major** version,
 - `feat:` bumps the **minor** version,
 - anything else (`fix:`, `chore:`, ...) bumps the **patch** version.
 
-The bump commit is pushed back to `main` with a `[skip ci]` marker so it doesn't trigger another
-deploy.
+The hook folds the bump into the commit that was just made (via `git commit --amend`), so history
+stays a single, atomic commit per change — no separate "bump version" commits, and nothing is
+pushed back to `main` by CI. Enable the hook once per clone:
+
+```bash
+git config core.hooksPath .githooks
+```

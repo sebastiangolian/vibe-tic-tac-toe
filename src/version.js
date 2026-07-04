@@ -1,2 +1,2 @@
-// Bumped automatically on deploy by .github/scripts/bump-version.js — do not edit by hand.
-export const APP_VERSION = "0.1.1";
+// Bumped automatically on every commit by .githooks/post-commit — do not edit by hand.
+export const APP_VERSION = "0.1.2";
