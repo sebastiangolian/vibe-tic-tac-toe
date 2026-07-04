@@ -5,7 +5,7 @@ self-contained unit of work; later items depend on the abstractions introduced e
 
 - [x] 1. Project scaffolding — base folder structure, `index.html` shell, empty entry point and
       stylesheet.
-- [ ] 2. `Board` — owns the 3x3 grid state only (cell values, empty-cell lookup, reset).
+- [x] 2. `Board` — owns the 3x3 grid state only (cell values, empty-cell lookup, reset).
       Single Responsibility: no game rules, no rendering.
 - [ ] 3. `Player` — represents a participant and their mark (X/O).
 - [ ] 4. `WinChecker` — a `WinStrategy` interface plus a default 3x3 implementation that detects
