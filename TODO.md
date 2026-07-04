@@ -14,7 +14,7 @@ self-contained unit of work; later items depend on the abstractions introduced e
 - [x] 5. `GameEngine` — orchestrates `Board`, `Player`s and a `WinStrategy`, all received via
       constructor injection. Dependency Inversion: the engine depends on abstractions, not
       concrete implementations.
-- [ ] 6. `Renderer` — a rendering interface plus a DOM-based implementation. Keeps game logic
+- [x] 6. `Renderer` — a rendering interface plus a DOM-based implementation. Keeps game logic
       completely unaware of the DOM (Dependency Inversion / Interface Segregation).
 - [ ] 7. `InputHandler` — translates DOM click events into moves sent to `GameEngine`, kept
       separate from rendering concerns (Interface Segregation).
