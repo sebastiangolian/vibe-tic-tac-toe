@@ -11,7 +11,7 @@ self-contained unit of work; later items depend on the abstractions introduced e
 - [x] 4. `WinChecker` — a `WinStrategy` interface plus a default 3x3 implementation that detects
       a win or a draw. Open/Closed: new rule sets (e.g. bigger boards) can be added later without
       touching existing code.
-- [ ] 5. `GameEngine` — orchestrates `Board`, `Player`s and a `WinStrategy`, all received via
+- [x] 5. `GameEngine` — orchestrates `Board`, `Player`s and a `WinStrategy`, all received via
       constructor injection. Dependency Inversion: the engine depends on abstractions, not
       concrete implementations.
 - [ ] 6. `Renderer` — a rendering interface plus a DOM-based implementation. Keeps game logic
