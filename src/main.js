@@ -7,6 +7,7 @@ import { InputHandler } from "./InputHandler.js";
 
 const boardElement = document.getElementById("board");
 const statusElement = document.getElementById("status");
+const resetButton = document.getElementById("reset-button");
 
 const board = new Board();
 const players = [new Player("Player X", "X"), new Player("Player O", "O")];
@@ -38,6 +39,11 @@ new InputHandler(boardElement, (index) => {
   }
 
   engine.playMove(index);
+  update();
+});
+
+resetButton.addEventListener("click", () => {
+  engine.reset();
   update();
 });
 
