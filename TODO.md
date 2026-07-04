@@ -8,7 +8,7 @@ self-contained unit of work; later items depend on the abstractions introduced e
 - [x] 2. `Board` — owns the 3x3 grid state only (cell values, empty-cell lookup, reset).
       Single Responsibility: no game rules, no rendering.
 - [x] 3. `Player` — represents a participant and their mark (X/O).
-- [ ] 4. `WinChecker` — a `WinStrategy` interface plus a default 3x3 implementation that detects
+- [x] 4. `WinChecker` — a `WinStrategy` interface plus a default 3x3 implementation that detects
       a win or a draw. Open/Closed: new rule sets (e.g. bigger boards) can be added later without
       touching existing code.
 - [ ] 5. `GameEngine` — orchestrates `Board`, `Player`s and a `WinStrategy`, all received via
