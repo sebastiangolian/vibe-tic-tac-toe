@@ -21,5 +21,5 @@ self-contained unit of work; later items depend on the abstractions introduced e
 - [x] 8. Composition root — wire `Board`, `Player`s, `WinChecker`, `Renderer` and `InputHandler`
       together in `main.js`.
 - [x] 9. Styling — CSS for the board grid, cells and game status message.
-- [ ] 10. Documentation — README with game rules, how to run it, and how the modules map to
+- [x] 10. Documentation — README with game rules, how to run it, and how the modules map to
       SOLID principles.
