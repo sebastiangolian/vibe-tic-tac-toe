@@ -122,3 +122,11 @@ h1 {
 #reset-button:hover {
   background: #334155;
 }
+
+#version {
+  position: fixed;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}

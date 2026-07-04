@@ -4,11 +4,13 @@ import { ThreeByThreeWinStrategy } from "./ThreeByThreeWinStrategy.js";
 import { GameEngine } from "./GameEngine.js";
 import { DomRenderer } from "./DomRenderer.js";
 import { InputHandler } from "./InputHandler.js";
+import { APP_VERSION } from "./version.js";
 
 const boardElement = document.getElementById("board");
 const statusElement = document.getElementById("status");
 const winLineElement = document.getElementById("win-line");
 const resetButton = document.getElementById("reset-button");
+const versionElement = document.getElementById("version");
 
 const board = new Board();
 const players = [new Player("Player X", "X"), new Player("Player O", "O")];
@@ -48,4 +50,5 @@ resetButton.addEventListener("click", () => {
   update();
 });
 
+versionElement.textContent = `v${APP_VERSION}`;
 update();

@@ -39,3 +39,16 @@ independently replaceable pieces:
 | [`src/main.js`](src/main.js) | Composition root — the only place that wires all the concrete pieces together. |
 
 See [TODO.md](TODO.md) for the original design breakdown and progress.
+
+## Versioning
+
+The version shown in the bottom-right corner ([`src/version.js`](src/version.js)) is bumped
+automatically on every deploy to `main` by [`scripts/bump-version.js`](scripts/bump-version.js),
+based on Conventional Commit messages pushed in that deploy:
+
+- a breaking change (`feat!:`, `fix!:`, or a `BREAKING CHANGE` footer) bumps the **major** version,
+- `feat:` bumps the **minor** version,
+- anything else (`fix:`, `chore:`, ...) bumps the **patch** version.
+
+The bump commit is pushed back to `main` with a `[skip ci]` marker so it doesn't trigger another
+deploy.
