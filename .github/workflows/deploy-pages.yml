@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy_1.outputs.page_url || steps.deploy_2.outputs.page_url || steps.deploy_3.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -37,5 +37,30 @@ jobs:
         with:
           path: site
 
-      - id: deployment
+      # actions/deploy-pages has its own internal polling (error_count/timeout), but that only
+      # covers "not ready yet" states — once GitHub's Pages backend returns an explicit
+      # "Deployment failed, try again later." it gives up immediately. That error is a known,
+      # transient backend flake unrelated to the artifact, so retry the whole step a few times.
+      - name: Deploy to GitHub Pages (attempt 1)
+        id: deploy_1
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Wait before retry (attempt 2)
+        if: steps.deploy_1.outcome == 'failure'
+        run: sleep 15
+
+      - name: Deploy to GitHub Pages (attempt 2)
+        id: deploy_2
+        if: steps.deploy_1.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Wait before retry (attempt 3)
+        if: steps.deploy_2.outcome == 'failure'
+        run: sleep 15
+
+      - name: Deploy to GitHub Pages (attempt 3)
+        id: deploy_3
+        if: steps.deploy_2.outcome == 'failure'
         uses: actions/deploy-pages@v4
