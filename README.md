@@ -43,7 +43,8 @@ See [TODO.md](TODO.md) for the original design breakdown and progress.
 ## Versioning
 
 The version shown in the bottom-right corner ([`src/version.js`](src/version.js)) is bumped
-automatically on every deploy to `main` by [`scripts/bump-version.js`](scripts/bump-version.js),
+automatically on every deploy to `main` by
+[`.github/scripts/bump-version.js`](.github/scripts/bump-version.js),
 based on Conventional Commit messages pushed in that deploy:
 
 - a breaking change (`feat!:`, `fix!:`, or a `BREAKING CHANGE` footer) bumps the **major** version,
